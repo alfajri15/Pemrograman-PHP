@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Data Barang</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -90,17 +90,17 @@
               <div class="card-header">
                 <h3 class="card-title">Table Data Barang</h3>
                 <br>
-                <a class="btn mt-2" style="background-color:#17a2b8; color:#ffffff" href="f_Produk.php"><i class="fa fa-plus nav-icon mr-2"></i>Tambah Produk</a>
+                <a class="btn mt-2" style="background-color:#17a2b8; color:#ffffff" href="indexAdd.php"><i class="fa fa-plus nav-icon mr-2"></i>Tambah Produk</a>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <?php 
+              <div class="card-body"> 
+                  <?php 
                       require_once 'controllers/class_produk.php';
                       // ciptakan object dari class Produk
                       $obj = new Produk($dbh);
                       // panggil method tampilkan data produk
-                      $rs = $obj->getAllProduk();
-                ?>
+                      $rs = $obj->dataProduk();
+                    ?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -112,7 +112,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <?php 
+                    <?php 
                         $no = 1;
                         foreach($rs as $pro){
                     ?>
@@ -134,7 +134,6 @@
                     $no++;
                     }
                     ?>
-                  
                   </tbody>
                   <tfoot>
                   <tr>
