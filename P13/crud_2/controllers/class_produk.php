@@ -4,21 +4,25 @@
         public function __construct($dbh){
             $this->dbh = $dbh;
         }
-        
-        public function getAllProduk(){
-            $sql = "SELECT * FROM produk";
-            // prepare statement PDO
-            $ps = $this->dbh->prepare($sql); 
-            $ps->execute();
-            $rs = $ps->fetchAll();
-            return $rs;
-        }
 
-        public function getAllJenis(){
-            $sql="SELECT * FROM jenis";
-            // prepare statement PDO
+        public function dataProduk(){
+            $sql="SELECT * FROM produk";
             $rs = $this->dbh->query($sql);
             return $rs;
+        }
+        
+        public function getAllJenis(){
+            $sql = "SELECT * FROM jenis";
+            // fungsi query, eksekusi query dan ambil datanya
+            $rs = $this->dbh->query($sql); 
+            return $rs;
+        }
+        public function simpan($data){
+            $sql = "INSERT INTO produk(kode,nama,kondisi,harga,stok,idjenis,foto)
+                    VALUES (?,?,?,?,?,?,?)";
+            // prepare statement PDO
+            $ps = $this->dbh->prepare($sql); 
+            $ps->execute($data);
         }
 
     }
