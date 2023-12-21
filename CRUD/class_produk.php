@@ -38,5 +38,18 @@
             return $rs;
         }
 
+        public function ubah($data){
+            $sql = "UPDATE produk SET kode=?, nama=?, kondisi=?, harga=?, stok=?, idjenis=?, foto=? WHERE id=?";
+            // prepare statement PDO
+            $ps = $this->dbh->prepare($sql); 
+            $ps->execute($data);
+        }
+
+        public function hapus($id){
+            $sql = "DELETE FROM produk WHERE id=?";
+            // prepare statement PDO
+            $ps = $this->dbh->prepare($sql); 
+            $ps->execute($id);
+        }
     }
 ?>
