@@ -29,5 +29,14 @@
             $ps->execute($data);
         }
 
+        public function getProduk($id){
+            $sql = "SELECT produk.*, jenis.nama AS kategori FROM produk INNER JOIN jenis ON jenis.id = produk.idjenis WHERE produk.id = ?";
+            // prepare statement PDO
+            $ps = $this->dbh->prepare($sql); 
+            $ps->execute([$id]);
+            $rs = $ps->fetch();
+            return $rs;
+        }
+
     }
 ?>
