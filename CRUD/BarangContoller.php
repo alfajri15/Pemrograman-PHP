@@ -26,6 +26,23 @@
     // proses
     $obj = new Produk($dbh);
     $obj->simpan($data);
+    //proses edit & hapus
+    switch ($tombol) {
+        case 'simpan';
+            $obj->simpan($data);
+            break;
+        case 'ubah';
+            $data[] = $_POST['idx']; //tangkap hidden field u/ ? ke-8
+            $obj->ubah($data);
+            break;
+        case 'hapus';
+        $id[] = $_POST['idx']; //tangkap ke-1 where id=?
+        $obj->hapus($id);
+        break;  
+        default://tombol batal
+        header('Location:http://localhost/Latihan_PHP/p12/template/index.php?hal=DataBarang');
+            break;
+    }
 
     // Landing Page
     header('Location://localhost/Latihan_PHP/p12/template/index.php');
